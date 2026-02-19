@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 public class ScoreControl : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    private float score = 0;
+    private int score = 0;
 
     void Start()
     {
-        UpdateUI();
     }
 
     void Update()
@@ -38,6 +37,10 @@ public class ScoreControl : MonoBehaviour
                     Debug.Log("Brick Destroyed");
                     AddScore(50);
                 }
+                if (scoreText != null)
+                {
+                scoreText.text = "Score\n" + score.ToString("D6");
+                }
             }
         }
     }
@@ -45,12 +48,5 @@ public class ScoreControl : MonoBehaviour
     void AddScore(int amount)
     {
         score += amount;
-        UpdateUI();
-    }
-
-    void UpdateUI()
-    {
-        if (scoreText != null)
-            scoreText.text = "Score\n" + score;
     }
 }
