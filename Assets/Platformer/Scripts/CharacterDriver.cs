@@ -68,6 +68,15 @@ public class CharacterControllerDriver : MonoBehaviour
 
             _yVelocity += gravity * Time.deltaTime;
             _xVelocity += direction * airAcceleration * Time.deltaTime;
+            //float xMaxSpeed2 = runHeld ? runSpeed : walkSpeed;
+
+            //// Accelerate toward target speed in air so you can reverse direction mid-air
+            //float targetX = direction * xMaxSpeed2;
+            //_xVelocity = Mathf.MoveTowards(_xVelocity, targetX, airAcceleration * Time.deltaTime);
+
+            //// Optional: keep facing consistent in air too (uses your existing quaternions)
+            //if (direction != 0f)
+            //    transform.rotation = (direction > 0f) ? _facingRight : _facingLeft;
         }
 
         // Speed Clamping

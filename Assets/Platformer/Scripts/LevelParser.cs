@@ -39,6 +39,8 @@ public class LevelParser : MonoBehaviour
     public GameObject brickPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
+    public GameObject goombaPrefab;
+    public GameObject koopaGreenPrefab;
 
     void Start()
     {
@@ -65,7 +67,7 @@ public class LevelParser : MonoBehaviour
         {
             string rowString = levelRows.Pop();
             char[] rowChars = rowString.ToCharArray();
-            
+
             for (var columnIndex = 0; columnIndex < rowChars.Length; columnIndex++)
             {
                 var currentChar = rowChars[columnIndex];
@@ -100,6 +102,20 @@ public class LevelParser : MonoBehaviour
                     Vector3 newPosition = new Vector3(columnIndex + 0.5f, row + 0.5f, 0);
                     Transform rockInstance = Instantiate(rockPrefab).transform;
                     rockInstance.position = newPosition;
+                }
+
+                if (currentChar == 'g')
+                {
+                    Vector3 newPosition = new Vector3(columnIndex + 0.5f, row + 0.5f, 0);
+                    Transform goombaInstance = Instantiate(goombaPrefab).transform;
+                    goombaInstance.position = newPosition;
+                }
+
+                if (currentChar == 'k')
+                {
+                    Vector3 newPosition = new Vector3(columnIndex + 0.5f, row + 0.5f, 0);
+                    Transform koopaGreenInstance = Instantiate(koopaGreenPrefab).transform;
+                    koopaGreenInstance.position = newPosition;
                 }
             }
 
